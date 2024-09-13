@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "ApprovalDashboard";
+}
+
+<h1>ApprovalDashboard</h1>
+
+<h2>Claim Approval Dashboard</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Lecturer Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimID</td>
+                <td>@claim.LecturerName</td>
+                <td>@claim.Amount</td>
+                <td>@claim.Status</td>
+                <td>
+                    @if (claim.Status == "Pending")
+                    {
+                        <a asp-action="Approve" asp-route-id="@claim.ClaimID" class="btn btn-success">Approve</a>
+                        <a asp-action="Reject" asp-route-id="@claim.ClaimID" class="btn btn-danger">Reject</a>
+                    }
+                    else
+                    {
+                        <span>@claim.Status</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

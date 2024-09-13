@@ -1,0 +1,28 @@
+﻿@model ST10272948_PART_1.Models.ClaimViewModel
+
+@{
+    ViewData["Title"] = "SubmitClaim";
+}
+
+<h2>Submit Your Claim</h2>
+<form asp-action="SubmitClaim" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="Amount">Claim Amount:</label>
+        <input type="number" asp-for="Amount" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="SubmissionDate">Submission Date:</label>
+        <input type="date" asp-for="SubmissionDate" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="SupportingDocument">Supporting Document:</label>
+        <input type="file" asp-for="SupportingDocument" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Claim</button>
+</form>
+
+@if (Model?.Status != null)
+{
+    <div class="alert alert-info">@Model.Status</div>
+}
+

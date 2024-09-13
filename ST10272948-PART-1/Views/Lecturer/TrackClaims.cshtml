@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "TrackClaims";
+}
+
+<h1>TrackClaims</h1>
+
+<h2>Claim Tracking</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Date Submitted</th>
+            <th>Amount</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimID</td>
+                <td>@claim.SubmissionDate.ToShortDateString()</td>
+                <td>@claim.Amount</td>
+                <td>@claim.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
